@@ -100,7 +100,10 @@ describe "User pages" do
 
 	describe "profile page" do
 		let(:user) {FactoryGirl.create(:user)}
-		before {visit user_path(user)}
+		before do
+			sign_in user # this is because we do not want anyone else to see your page
+			visit user_path(user)
+		end
 
 		it {should have_selector('h1', text: user.name) }
 		#it {should have_selector('title', text: user.name ) } #skipping this as I am not able to get it to work
