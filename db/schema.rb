@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106001144) do
+ActiveRecord::Schema.define(version: 20140123150907) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20140106001144) do
     t.datetime "updated_at"
     t.string   "author"
   end
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "countries", ["name"], name: "index_countries_on_name", unique: true
 
   create_table "messages", force: true do |t|
     t.text     "body"
