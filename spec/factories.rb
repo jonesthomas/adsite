@@ -18,4 +18,8 @@ FactoryGirl.define do
 		sequence(:author) {|n| "Author #{n}" }
 		body "Seeing the blog"
 	end
+	
+	factory :country do
+		sequence(:name) {|n| "Country #{n}" }
+	end
 end

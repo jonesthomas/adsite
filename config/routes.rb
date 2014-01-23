@@ -2,6 +2,7 @@ Eudora::Application.routes.draw do
   get "password_resets/new"
   #get "messages/new"
   #get "blogs/new"
+	resources :countries
 	resources :password_resets
 	resources :users
 	resources :messages, only: [:new, :create]
