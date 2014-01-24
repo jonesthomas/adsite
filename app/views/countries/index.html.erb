@@ -1,0 +1,15 @@
+<% provide(:title, 'All Countries') %>
+<div class="jonestitle"> <h1>All Countries</h1> </div>
+
+<div class="container-fluid">
+
+<%= will_paginate %>
+<ul class="countries">
+
+	 <%= render @countries %>
+
+</ul>
+<%= will_paginate %>	
+
+
+</div>

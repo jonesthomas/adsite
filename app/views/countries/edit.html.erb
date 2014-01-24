@@ -1,18 +1,19 @@
-<% provide(:title, 'Add Country') %>
-<div class="jonestitle"> <h1>Add Country</h1> </div>
+<% provide(:title, "Edit Country") %>
+<div class="jonestitle"> <h1>Edit Country</h1> </div>
 <div class="container">
 <div class="row">
-	<div class="col-xs-10 col-xs-offset-1 ">
+	<div class="col-xs-10 col-xs-offset-1">
     <%= form_for(@country) do |f| %>
       <%= render 'shared/country_error_messages' %>
+
       <%= f.label :name %>
       <%= f.text_field :name, class:"form-control input-md" %>
 
 
 		<div class="jonestopspacer">
-      <%= f.submit "Submit Country", class: "btn btn-lg btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-lg btn-primary" %>
     <% end %>
-  	</div>
+   </div>
   </div>
 </div>
 </div>

@@ -1,45 +1,55 @@
 class CountriesController < ApplicationController
-	include SessionsHelper
-  #before_action :admin_user,     only: [:new, :create,:destroy]
 
-	def show
+  before_action :authenticate, except:[ :index, :show ]
+  def show
     @country = Country.find(params[:id])
   end
 
   def new
-    @country = Country.new
+		@country = Country.new
+  end
+
+ 	def update
+    @country = Country.find(params[:id])
+    if @country.update_attributes(country_params)
+      flash[:success] = "Country updated"
+      redirect_to @country
+    else
+      render 'edit'
+    end
+  end
+
+	def edit
+		    @country = Country.find(params[:id])
   end
 
   def create
     @country = Country.new(country_params)    # Not the final implementation!
     if @country.save
-			flash[:success] = "New Country Added!"
-       # Tell the UserMailer to send a welcome Email after save
+
+			flash[:success] = "New Country!"
       redirect_to @country
     else
       render 'new'
     end
   end
 
-	private
+	def index
+    @countries = Country.paginate(page: params[:page])
+		#@blogs=Blog.all
+	end
+
+private
 
     def country_params
       params.require(:country).permit(:name)
     end
-# Before filters
 
-    def signed_in_user
-			store_location
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+	  private
+  	
+		def authenticate
+    authenticate_or_request_with_http_basic do |name, password|
+      name == "admin1" && password == "ILcorporations1234!!"
     end
-
- 		def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
- 		def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
-
-end # end country
+  end
+end

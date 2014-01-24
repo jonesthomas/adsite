@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
    request.user_agent =~ /Mobile|webOS/  
  	end 
 
+
  	helper_method :mobile?
 
 end
