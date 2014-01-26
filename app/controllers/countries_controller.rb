@@ -20,7 +20,7 @@ class CountriesController < ApplicationController
   end
 
 	def edit
-		    @country = Country.find(params[:id])
+		 @country = Country.find(params[:id])
   end
 
   def create

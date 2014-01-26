@@ -1,10 +1,10 @@
 <% provide(:title, @country.name) %>
-<ul class="countries">
+<ul class="users">
  <p id="notice"><%= notice %></p>
 
  <%= render @country %>
 
- <%= link_to 'Edit', edit_country_path(@blog) %> |
+ <%= link_to 'Edit', edit_country_path(@country) %> |
  <%= link_to 'Back', countries_path %>
 
 </ul>
