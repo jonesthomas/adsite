@@ -20,7 +20,8 @@ describe "Country Pages" do
 		    it { should have_selector('div.pagination') } #not working, not sure why
 		    it "should list each blog" do
 		      Country.paginate(page: 1).each do |country|
-		        expect(page).to have_selector('li', text: country.name)
+		        #expect(page).to have_selector('li', text: country.name) # Use this if paginating models
+		        expect(page).to have_content(country.name)
 		      end
 		    end
 
