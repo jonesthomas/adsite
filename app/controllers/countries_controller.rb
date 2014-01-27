@@ -2,7 +2,10 @@ class CountriesController < ApplicationController
 
   before_action :authenticate, except:[ :index, :show ]
   def show
-    @country = Country.find(params[:id])
+   # @country = Country.find(params[:id])
+    @country = Country.friendly.find(params[:id])
+
+
   end
 
   def new
@@ -10,7 +13,8 @@ class CountriesController < ApplicationController
   end
 
  	def update
-    @country = Country.find(params[:id])
+    #@country = Country.find(params[:id]) # update for friendly id
+		@country = Country.friendly.find(params[:id])
     if @country.update_attributes(country_params)
       flash[:success] = "Country updated"
       redirect_to @country
@@ -20,7 +24,8 @@ class CountriesController < ApplicationController
   end
 
 	def edit
-		 @country = Country.find(params[:id])
+		 #@country = Country.find(params[:id])
+		 @country = Country.friendly.find(params[:id])
   end
 
   def create

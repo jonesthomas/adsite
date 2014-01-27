@@ -4,10 +4,10 @@
 <div class="container-fluid">
 
 <%= will_paginate %>
-<ul class="blogs">
+<ul class="countries">
 	<% for country in @countries %>
-	<%=image_tag(image_path("#{country.name}.jpg"), alt: "USA", class: "countryimage" )%>
-  <%= link_to country.name, country_path(country) %> 
+	<%=image_tag(image_path("#{country.name}.jpg"), alt: "#{country.name}", class: "countryimage" )%>
+  <%= link_to country.name, country_path(country) %> <br>
 <% end %>
 </ul>
 <%= will_paginate %>	

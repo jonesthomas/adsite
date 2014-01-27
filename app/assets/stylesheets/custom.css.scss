@@ -49,6 +49,10 @@ footer {
 .jonestitle{
 	text-align:center;
 }
+.countrytitle {
+	text-align:center;
+	margin-bottom:10px;
+}
 
 .jonestopspacer{
 	margin-top: 20px;
@@ -94,6 +98,21 @@ footer {
 .blogs {
   list-style: none;
   margin: 0;
+
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+.countries {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 10px;
   li {
     overflow: auto;
     padding: 10px 0;

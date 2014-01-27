@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 gem 'execjs'
-
+gem 'friendly_id'
 gem 'therubyracer'
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '3.0.2'
