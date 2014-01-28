@@ -2,9 +2,11 @@ class CountriesController < ApplicationController
 
   before_action :authenticate, except:[ :index, :show ]
   def show
-   # @country = Country.find(params[:id])
+    #@country = Country.find(params[:id])
     @country = Country.friendly.find(params[:id])
-
+		if request.path != country_path(@country)
+			redirect_to @country, status: :moved_permanently
+		end
 
   end
 

@@ -4,8 +4,11 @@ class Country < ActiveRecord::Base
 		#"#{id} #{name}".parameterize
 	#end
 	extend FriendlyId
-	friendly_id :name, use: :slugged
+ friendly_id :name, use: [:slugged, :history]
+	#def should_generate_new_friendly_id?
+		#new_record?
+	#end
 	def should_generate_new_friendly_id?
-		new_record?
+  	slug.blank? || name_changed?
 	end
 end
