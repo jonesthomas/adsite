@@ -163,11 +163,34 @@ describe "Country Pages" do
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
       specify { expect(country.reload.name).to  eq new_name }
-
-	
- 
+ 			
     end #end edit with valid info
+	
+		describe "change name URL redirects properly" do
+		  let(:country2) { FactoryGirl.create(:country, name: "Russia") }
+			let(:old_name) {country2.name}
+      let(:new_name2)  { "United States 2" }
+      let(:old_URL_name)  { "russia" }
+			let(:new_URL_name)  { "united-states-2" }
+    	before do
+				basic_auth('admin1', 'ILcorporations1234!!')
+      	visit edit_country_path(country2)
+        fill_in "Name",             with: new_name2
+				click_button "Save changes"
+   		 end
+      it { should have_title(new_name2) }
+      it { should have_selector('div.alert.alert-success') }
+      specify { expect(country2.reload.name).to  eq new_name2 }
+      specify { expect(page.status_code).to  eq 200 }	
 
+			describe "visits old URL" do
+				before {visit "/countries/#{old_URL_name}"}
+				specify { expect(page.status_code).to  eq 200 }	
+
+
+			end		
+
+		end # change name
   end #end edit page
 
 ##########################3
