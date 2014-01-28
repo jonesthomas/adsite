@@ -186,7 +186,7 @@ describe "Country Pages" do
 			describe "visits old URL" do
 				before {visit "/countries/#{old_URL_name}"}
 				specify { expect(page.status_code).to  eq 200 }	
-
+				it { should have_title(new_name2) }
 
 			end		
 
