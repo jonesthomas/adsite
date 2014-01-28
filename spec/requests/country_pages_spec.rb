@@ -163,6 +163,8 @@ describe "Country Pages" do
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
       specify { expect(country.reload.name).to  eq new_name }
+
+	
  
     end #end edit with valid info
 
