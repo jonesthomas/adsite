@@ -26,6 +26,23 @@ describe "Country Pages" do
 		    end
 
     end # end pagination
+		
+		describe "countries are in order of creation" do
+			before {Country.delete_all}
+    	let!(:second_country) do
+      	FactoryGirl.create(:country, name: "me2", created_at: 1.hour.ago)
+    	end
+
+		  let!(:first_country) do
+      	FactoryGirl.create(:country, name: "me1", created_at: 1.day.ago)
+    	end
+
+			let (:countries){Country.all}
+    	it "should have the right countries in the right order" do
+      	expect(countries.to_a).to eq [first_country, second_country]
+    end
+		end # end country order
+
 	end #index
 	
 	describe "New Country Page" do
