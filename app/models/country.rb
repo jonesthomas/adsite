@@ -1,5 +1,6 @@
 class Country < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 70 }, uniqueness: { case_sensitive: false }
+  validates :country_code, presence:true, uniqueness: true
 	#def to_param
 		#"#{id} #{name}".parameterize
 	#end

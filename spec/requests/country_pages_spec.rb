@@ -121,7 +121,7 @@ describe "Country Pages" do
 			describe "with valid information" do
 				before do
 					fill_in "Name", 				with: "United States"
-
+					fill_in "Country code", with: 840
 				end 
 				it "should create a country" do
 					expect {click_button submit}.to change(Country, :count).by(1)

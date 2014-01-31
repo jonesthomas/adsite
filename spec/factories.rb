@@ -21,5 +21,7 @@ FactoryGirl.define do
 	
 	factory :country do
 		sequence(:name) {|n| "Country #{n}" }
+		sequence(:country_code) {|n| "#{n}" }
+		
 	end
 end
