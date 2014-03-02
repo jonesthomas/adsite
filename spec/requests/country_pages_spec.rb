@@ -93,6 +93,7 @@ describe "Country Pages" do
 			
 			it { should have_title(("#{base_title} | Add Country")  ) }
 			it { should have_content('Add Country') }
+			it { should have_content('Pretty Cool') }
       specify { expect(page.status_code).to  eq 200 }
 		end #visit new country page with valid password
 
